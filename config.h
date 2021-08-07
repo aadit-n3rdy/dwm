@@ -50,12 +50,13 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-//	"dunst", NULL,
-//	"start-pulseaudio-x11", NULL,
+	"dunst", NULL,
+	"start-pulseaudio-x11", NULL,
 //	"discord", NULL,
 	"feh", "--bg-scale", "Pictures/bg.png", NULL,
 	"sh", "status.sh", NULL,
 	"picom", "--experimental-backends", NULL,
+	"redshift", "-P", "-O", "4200", "-b", "0.6", NULL,
 	NULL /* terminate */
 };
 
@@ -69,8 +70,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,	  NULL,       1 << 1,       0,           -1 },
-	{ "discord",  NULL,       NULL,       1 << 2,       0,           -1 }
+	{ "firefox",  NULL,	  NULL,       1 << 1,       0,           -1 },
+	{ "discord",  NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -127,6 +128,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
