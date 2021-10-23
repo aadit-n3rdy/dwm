@@ -56,6 +56,8 @@ static const char *const autostart[] = {
 	"feh", "--bg-scale", "Pictures/bg.png", NULL,
 	"sh", "status.sh", NULL,
 	"picom", "--experimental-backends", NULL,
+	"blueman-applet", NULL,
+	"xbindkeys", NULL,
 	NULL /* terminate */
 };
 
@@ -69,7 +71,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,	  NULL,       1 << 1,       0,           -1 },
+	{ "Mozilla Firefox",  NULL,	  NULL,       1 << 1,       0,           -1 },
 	{ "discord",  NULL,       NULL,       1 << 2,       0,           -1 }
 };
 
@@ -101,6 +103,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run", NULL};
 static const char *termcmd[]  = { "st", NULL };
+static const char *sscmd[] = { "flameshot", "gui", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -128,6 +131,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ 0,				XK_Print,  spawn,	   {.v = sscmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
